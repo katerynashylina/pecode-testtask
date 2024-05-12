@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+
+.footer {
+  display: flex;
+  min-height: 90px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  background-color: $grayColor;
+  border-top: 1px solid $pressedColor;
+
+  & p {
+    font-size: 15px;
+  }
+}

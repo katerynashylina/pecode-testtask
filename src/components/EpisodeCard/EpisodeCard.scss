@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+
+.card {
+  display: flex;
+  gap: 20px;
+  width: 500px;
+  background-color: $grayColor;
+  padding: 20px;
+  border: 1px solid $pressedColor;
+  border-radius: 10px;
+
+  &__image {
+    width: 250px;
+    height: auto;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 8px;
+  }
+
+  &__description {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

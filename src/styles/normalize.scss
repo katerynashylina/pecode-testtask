@@ -1,0 +1,13 @@
+@import './variables.scss';
+
+h1 {
+  font-size: 32px;
+  color: $blackColor;
+  font-weight: 600;
+}
+
+p {
+  font-size: 20px;
+  color: $blackColor;
+  font-weight: 400;
+}

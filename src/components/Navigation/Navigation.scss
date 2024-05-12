@@ -1,0 +1,37 @@
+@import "../../styles/variables.scss";
+
+.navigation {
+  display: flex;
+  height: 90px;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  background-color: $grayColor;
+  border-bottom: 1px solid $pressedColor;
+
+  &__element {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 25px;
+      left: 0;
+      right: 0;
+      border-radius: 8px;
+      background-color: $hoverColor;
+      height: 0;
+      opacity: 0;
+      transition: height 0.3s ease, opacity 0.3s ease, color 0.3s;
+    }
+
+    &--active {
+      color: $hoverColor;
+  
+      &::after {
+        height: 3px;
+        opacity: 1;
+      }
+    }
+  }
+}

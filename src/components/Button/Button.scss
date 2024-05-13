@@ -1,0 +1,20 @@
+@import '../../styles/variables.scss';
+
+.button {
+  width: 100%;
+  max-width: 500px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1.5px solid $blackColor;
+  background-color: $grayColor;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+
+  transition: transform 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
+}

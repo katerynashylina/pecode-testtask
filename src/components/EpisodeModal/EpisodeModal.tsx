@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Character } from "../../types/Character";
 import axios from "axios";
 import { EpisodeCharacter } from "../EpisodeCharacter/EpisodeCharacter";
+import { Button } from "../Button/Button";
 
 type Props = {
   episode: Episode,
@@ -44,9 +45,10 @@ export const EpisodeModal: React.FC<Props> = ({ episode, onClose }) => {
       </ul>
 
       {!showAllCharacters && episode.characters.length > 3 && (
-        <button onClick={handleLoadMore} className="modal__load">
-          Load More
-        </button>
+        <Button 
+          onClick={handleLoadMore}
+          text="Load more"
+        />
       )}
     </div>
   )

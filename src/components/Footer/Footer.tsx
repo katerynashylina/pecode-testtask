@@ -14,7 +14,7 @@ export const Footer = () => {
         </Link>
       </p>
       <p>
-        <b>Tech Stack: </b> ...
+        <b>Tech Stack: </b> <br /> React, TypeScript, SCSS, classnames, axios, React Router
       </p>
       <p>
         <b>API Link: </b>

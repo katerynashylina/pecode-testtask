@@ -1,15 +1,17 @@
 import { useState } from "react";
-import "./Locations.scss"
 import { useQuery, gql } from '@apollo/client';
 import { LocationType } from "../../types/LocationType";
 import { LocationCard } from "../../components/LocationCard/LocationCard";
-import { Button } from "../../components/Button/Button";
+import { Loader } from "../../components/Loader/Loader";
+import { Pagination } from "../../components/Pagination/Pagination";
+import "./Locations.scss"
 
 const GET_LOCATIONS = gql`
   query GetLocations($page: Int!) {
     locations(page: $page) {
       info {
         count
+        pages
       }
       results {
         id
@@ -22,32 +24,12 @@ const GET_LOCATIONS = gql`
 `;
 
 export const Locations = () => {
-  const [page, setPage] = useState(1);
-  const { loading, error, data, fetchMore } = useQuery(GET_LOCATIONS, {
-    variables: { page }
+  const [currentPage, setCurrentPage] = useState(1);
+  const { loading, data } = useQuery(GET_LOCATIONS, {
+    variables: { page: currentPage },
   });
 
-  const loadMoreLocations = () => {
-    fetchMore({
-      variables: {
-        page: page + 1,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult) return prev;
-        return {
-          locations: {
-            info: fetchMoreResult.locations.info,
-            results: [...prev.locations.results, ...fetchMoreResult.locations.results],
-            __typename: 'Location',
-          },
-        };
-      },
-    });
-    setPage(page + 1);
-  };
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{'Error :('}</p>;
+  if (loading) return <Loader />;
 
   return (
     <div className="page__container">
@@ -62,7 +44,11 @@ export const Locations = () => {
         ))}
       </div>
 
-      {page < 7 && <Button onClick={loadMoreLocations} text="Load more" />}
+      <Pagination
+        currentPage={currentPage}
+        pages={data.locations.info.pages}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   )
 };

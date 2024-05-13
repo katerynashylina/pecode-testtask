@@ -1,0 +1,29 @@
+@import "../../styles/variables.scss";
+
+.pagination {
+  display: flex;
+  gap: 20px;
+
+  &__element {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    border: 1.4px solid $hoverColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: border-color 0.3s, font-weight 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $pressedColor;
+      font-weight: 600;
+    }
+
+    &--active {
+      border-color: $pressedColor;
+      font-weight: 600;
+    }
+  }
+}

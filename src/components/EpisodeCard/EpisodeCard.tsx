@@ -1,7 +1,6 @@
 import { Episode } from "../../types/Episode";
-import "./EpisodeCard.scss"
 import noPic from '../../images/no-pic.jpeg';
-import { EpisodeModal } from "../EpisodeModal/EpisodeModal";
+import "./EpisodeCard.scss"
 
 type Props = {
   episode: Episode,

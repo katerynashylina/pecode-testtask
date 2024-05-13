@@ -1,6 +1,7 @@
 import axios from "axios";
-import { Character } from "../../types/Character";
 import { useEffect, useState } from "react";
+import { Character } from "../../types/Character";
+import "./EpisodeCharacter.scss";
 
 type Props = {
   characterLink: string,
@@ -23,8 +24,14 @@ export const EpisodeCharacter: React.FC<Props> = ({ characterLink }) => {
   }, [])
 
   return (
-    <li>
-      {episodeCharacter?.name}
-    </li>
+    <div className="episode-char">
+      <img
+        src={episodeCharacter?.image}
+        alt={episodeCharacter?.name}
+        className="episode-char__image"
+      />
+
+      <p>{episodeCharacter?.name}</p>
+    </div>
   )
 };

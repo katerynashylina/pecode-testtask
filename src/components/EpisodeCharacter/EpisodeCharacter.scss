@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+
+.episode-char {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border: 1px solid $pressedColor;
+
+  &__image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+}

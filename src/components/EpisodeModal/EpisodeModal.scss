@@ -1,19 +1,19 @@
 @import "../../styles/variables.scss";
 
 .modal {
-  position: absolute;
-  z-index: 2;
-  min-height: 400px;
+  position: fixed;
+  top: 7%;
+  max-height: 500px;
   background-color: $pressedColor;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 20px;
   box-sizing: border-box;
-  padding: 50px 30px;
+  padding: 35px 30px;
   border-radius: 10px;
   border: 2px solid $blackColor;
+  overflow-y: auto;
 
   & p {
     color: $lightBlueColor;
@@ -50,6 +50,10 @@
 
   &__list {
     margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
     & li {
       color: $lightBlueColor;

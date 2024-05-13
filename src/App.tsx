@@ -1,12 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.scss"
-import './styles/reset.scss';
-import './styles/normalize.scss';
 import { Episodes } from "./pages/Episodes/Episodes";
 import { Characters } from "./pages/Characters/Characters";
 import { Locations } from "./pages/Locations/Locations";
 import { Navigation } from "./components/Navigation/Navigation";
 import { Footer } from "./components/Footer/Footer";
+import "./App.scss"
+import './styles/reset.scss';
+import './styles/normalize.scss';
 
 export const App = () => {
   return (

@@ -1,21 +1,23 @@
-import { useEffect, useMemo, useState } from "react";
-import "./Episodes.scss"
-import axios from "axios";
-import { BASE_URL } from "../../helpers/consts";
+import classNames from "classnames";
+import { useEffect, useState } from "react";
 import { Episode } from "../../types/Episode";
 import { getEpisodes } from "../../helpers/fetchData";
 import { EpisodeCard } from "../../components/EpisodeCard/EpisodeCard";
 import { EpisodeModal } from "../../components/EpisodeModal/EpisodeModal";
+import { Pagination } from "../../components/Pagination/Pagination";
+import "./Episodes.scss"
 
 export const Episodes = () => {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
   const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null);
-  const [page, setPage] = useState(1);
+  const [pages, setPages] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   async function fecthEpisodes() {
     try {
-      const response = await getEpisodes(page);
-      setEpisodes(response);
+      const response = await getEpisodes(currentPage);
+      setPages(response.info.pages);
+      setEpisodes(response.results);
     } catch (error) {
       console.error(error, 'error while fetching episodes');
     }
@@ -23,7 +25,7 @@ export const Episodes = () => {
 
   useEffect(() => {
     fecthEpisodes();
-  }, []);
+  }, [currentPage]);
 
   const handleEpisodeClick = (episode: Episode) => {
     setSelectedEpisode(episode);
@@ -34,7 +36,9 @@ export const Episodes = () => {
   }
 
   return (
-    <div className="page__container">
+    <div className={classNames("page__container", {
+      "page__container--not-active": selectedEpisode,
+    })}>
       <h1>Episodes</h1>
 
       {selectedEpisode &&
@@ -50,6 +54,12 @@ export const Episodes = () => {
           />
         ))}
       </div>
+
+      <Pagination
+        pages={pages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   )
 };

@@ -1,12 +1,10 @@
-import { Episode } from "../../types/Episode";
-import "./EpisodeModal.scss"
-import noPic from '../../images/no-pic.jpeg';
-import close from '../../images/closeBlack.svg';
 import { useState } from "react";
-import { Character } from "../../types/Character";
-import axios from "axios";
+import { Episode } from "../../types/Episode";
 import { EpisodeCharacter } from "../EpisodeCharacter/EpisodeCharacter";
 import { Button } from "../Button/Button";
+import noPic from '../../images/no-pic.jpeg';
+import close from '../../images/closeBlack.svg';
+import "./EpisodeModal.scss"
 
 type Props = {
   episode: Episode,
@@ -37,8 +35,8 @@ export const EpisodeModal: React.FC<Props> = ({ episode, onClose }) => {
         <p><b>Episode date:</b> {episode.air_date}</p>
       </div>
 
-      <p><b>Characters list:</b></p>
       <ul className="modal__list">
+      <p><b>Characters list:</b></p>
         {charactersToShow.map(charLink => (
           <EpisodeCharacter key={episode.id} characterLink={charLink} />
         ))}

@@ -1,5 +1,5 @@
-import noPic from '../../images/no-pic.jpeg';
 import { LocationType } from "../../types/LocationType";
+import noPic from '../../images/no-pic.jpeg';
 
 type Props = {
   location: LocationType,

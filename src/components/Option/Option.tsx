@@ -1,5 +1,4 @@
 import { OptionType } from "../../types/OptionType";
-import "./Option.scss"
 
 type Props = {
   option: OptionType,
@@ -7,7 +6,7 @@ type Props = {
 
 export const Option: React.FC<Props> = ({ option }) => {
   return (
-    <option value={option.id}>
+    <option value={option.name}>
       {option.name}
     </option>
   )

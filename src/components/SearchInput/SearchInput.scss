@@ -1,0 +1,29 @@
+@import "../../styles/variables.scss";
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+
+  &__input {
+    height: 40px;
+    width: 300px;
+    font-family: inherit;
+    font-size: 18px;
+    background-color: $grayColor;
+    border: 2px solid $hoverColor;
+    border-radius: 8px;
+    padding: 10px;
+
+    transition: border-color 0.3s;
+
+    &:active, &:focus {
+      border-color: $pressedColor;
+    }
+
+    &::placeholder {
+      color: $blackColor
+    }
+  }
+}

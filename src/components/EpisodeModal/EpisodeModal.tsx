@@ -1,7 +1,7 @@
 import { Episode } from "../../types/Episode";
 import "./EpisodeModal.scss"
-import noPic from '../../no-pic.jpeg';
-import close from '../../closeBlack.svg';
+import noPic from '../../images/no-pic.jpeg';
+import close from '../../images/closeBlack.svg';
 import { useState } from "react";
 import { Character } from "../../types/Character";
 import axios from "axios";

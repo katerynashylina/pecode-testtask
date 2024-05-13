@@ -1,0 +1,9 @@
+.characters {
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    // width: 100%;
+    // justify-content: first baseline;
+  }
+}

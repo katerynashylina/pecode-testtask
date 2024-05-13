@@ -1,6 +1,6 @@
 import { Episode } from "../../types/Episode";
 import "./EpisodeCard.scss"
-import noPic from '../../no-pic.jpeg';
+import noPic from '../../images/no-pic.jpeg';
 import { EpisodeModal } from "../EpisodeModal/EpisodeModal";
 
 type Props = {
@@ -18,8 +18,6 @@ export const EpisodeCard: React.FC<Props> = ({ episode, onClick }) => {
         <p><b>Episode name:</b> {episode.name}</p>
         <p><b>Episode date:</b> {episode.air_date}</p>
       </div>
-
-      {/* <EpisodeModal episode={episode} /> */}
     </div>
   )
 };

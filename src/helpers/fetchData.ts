@@ -1,11 +1,5 @@
-import axios, { AxiosResponse } from "axios"
+import axios from "axios"
 import { BASE_URL } from "./consts"
-
-type Filters = {
-  name?: string;
-  status?: string;
-  gender?: string;
-}
 
 const request = async (url: string) => {
   const res = await axios.get(BASE_URL + url);
@@ -14,12 +8,12 @@ const request = async (url: string) => {
 
 export const getEpisodes = (page: number) => request(`episode?page=${page}`);
 
-export const getCharacters = (page: number) => request(`character?page=${page}`);
-
-export const getCharactersWithFiltration = async (filters: Filters) => {
+export const getCharactersWithFiltration = async (
+  page: number, query: string, status: string, gender: string,
+) => {
   try {
-    const response: AxiosResponse = await axios.get(BASE_URL, { params: filters });
-    return response.data.results;
+    const response = await axios.get(`${BASE_URL}/character/?page=${page}&name=${query}&status=${status}&gender=${gender}`);
+    return response.data;
   } catch (error) {
     console.error('Error fetching character data:', error);
   }

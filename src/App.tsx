@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer/Footer";
 import "./App.scss"
 import './styles/reset.scss';
 import './styles/normalize.scss';
+import { NotFound } from "./pages/NotFoundPage/NotFound";
 
 export const App = () => {
   return (
@@ -17,6 +18,7 @@ export const App = () => {
         <Route path="episodes" element={<Navigate to="/" replace />} />
         <Route path="/characters" element={<Characters />} />
         <Route path="/locations" element={<Locations />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

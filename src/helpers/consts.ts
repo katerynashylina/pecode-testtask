@@ -3,15 +3,15 @@ export const BASE_URL: string = 'https://rickandmortyapi.com/api/';
 export const statuses = [
   {
     id: "1",
-    name: "All"
+    name: ""
   },
   {
     id: "2",
-    name: 'Alive',
+    name: 'alive',
   },
   {
     id: "3",
-    name: 'Dead',
+    name: 'dead',
   },
   {
     id: "4",
@@ -22,18 +22,22 @@ export const statuses = [
 export const genders = [
   {
     id: "1",
-    name: "All"
+    name: ""
   },
   {
     id: "2",
-    name: 'Male',
+    name: 'male',
   },
   {
     id: "3",
-    name: 'Female',
+    name: 'female',
   },
   {
     id: "4",
+    name: 'genderless',
+  },
+  {
+    id: "5",
     name: 'unknown',
   },
 ];

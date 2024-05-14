@@ -1,24 +1,28 @@
-import { ChangeEvent } from "react";
 import { OptionType } from "../../types/OptionType";
-import { Option } from "../Option/Option";
 import "./Selection.scss"
 
 type Props = {
   options: OptionType[],
   text: string,
   value: string,
-  onChange: (e: ChangeEvent<HTMLSelectElement>) => void,
+  setValue: React.Dispatch<React.SetStateAction<string>>,
 }
 
-export const Selection: React.FC<Props> = ({ options, text, value, onChange }) => {
+export const Selection: React.FC<Props> = ({ options, text, value, setValue }) => {
   return (
     <label className="selection">
       <b>{text}</b>
-      <select value={value} onChange={onChange} className="selection__select">
-        {options.map(option => (
-          <Option option={option} key={option.id} />
+      <select
+        value={value}
+        onChange={e => setValue(e.target.value)}
+        className="selection__select"
+      >
+        {options.map(op => (
+          <option value={op.name} key={op.id}>
+            {op.name === '' ? 'all' : op.name}
+          </option>
         ))}
       </select>
     </label>
-  )
+  );
 };

@@ -6,20 +6,26 @@ import { EpisodeCard } from "../../components/EpisodeCard/EpisodeCard";
 import { EpisodeModal } from "../../components/EpisodeModal/EpisodeModal";
 import { Pagination } from "../../components/Pagination/Pagination";
 import "./Episodes.scss"
+import { Loader } from "../../components/Loader/Loader";
 
 export const Episodes = () => {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
   const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null);
   const [pages, setPages] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function fecthEpisodes() {
+    setIsLoading(true);
+
     try {
       const response = await getEpisodes(currentPage);
       setPages(response.info.pages);
       setEpisodes(response.results);
     } catch (error) {
       console.error(error, 'error while fetching episodes');
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -34,6 +40,8 @@ export const Episodes = () => {
   const handleModalClose = () => {
     setSelectedEpisode(null);
   }
+
+  if (isLoading) return <Loader />;
 
   return (
     <div className={classNames("page__container", {

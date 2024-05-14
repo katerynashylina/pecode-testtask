@@ -12,7 +12,7 @@ The necessary links:
   2. Episodes Page: This page displays a paginated list of all episodes. Clicking on an episode opens a modal window showing detailed information about the episode, including characters. The user can also load more characters if available.
   3. Characters Page: Similar to the episodes page, this page displays a paginated list of all characters. It includes search functionality by character name and filters by status and gender. Each character entry includes basic information and an image.
   4. Locations Page: This page displays a paginated list of all locations. It uses GraphQL to fetch data and is similar in layout to the episodes page, including placeholder images.
-  5. Additional Functionality: The application includes a warning feature for character status (dead/alive/unknown), which the user can toggle on or off. It also handles incorrect URLs by redirecting the user to a not-found page.
+  5. Additional Functionality: The application includes a warning feature for character status (dead/alive/unknown), which the user can toggle on or off. It also handles incorrect URLs by redirecting the user to a not-found page. Also, debouncing has been implemented for the search input functionality to improve performance and reduce unnecessary API calls.
 
 ### Technologies Used:
 React: Utilized for creating dynamic and interactive user interfaces. TypeScript: Employed to provide static typing for enhanced code reliability and development experience.

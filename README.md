@@ -3,7 +3,7 @@
 The necessary links:
   [The task](https://drive.google.com/file/d/1y3rL_QKCiWBoc2VaV2dqyNI3XBs1GOgL/view), 
   [Demo Link](https://katerynashylina.github.io/pecode-testtask/),
-  [Api Linl](https://rickandmortyapi.com/documentation/).
+  [Api Link](https://rickandmortyapi.com/documentation/).
 
   This project is a simple web application based on the popular animated TV show "Rick and Morty". It utilizes data from the Rick and Morty API to display information about episodes, characters, and locations.
 

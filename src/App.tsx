@@ -4,10 +4,10 @@ import { Characters } from "./pages/Characters/Characters";
 import { Locations } from "./pages/Locations/Locations";
 import { Navigation } from "./components/Navigation/Navigation";
 import { Footer } from "./components/Footer/Footer";
+import { NotFound } from "./pages/NotFoundPage/NotFound";
 import "./App.scss"
 import './styles/reset.scss';
 import './styles/normalize.scss';
-import { NotFound } from "./pages/NotFoundPage/NotFound";
 
 export const App = () => {
   return (

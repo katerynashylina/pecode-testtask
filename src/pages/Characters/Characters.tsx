@@ -35,7 +35,7 @@ export const Characters = () => {
 
   useEffect(() => {
     fecthCharactersFilter();
-  }, [query, currentPage, status, gender])
+  }, [query, currentPage, status, gender]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);

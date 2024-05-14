@@ -4,7 +4,6 @@ import { LocationType } from "../../types/LocationType";
 import { LocationCard } from "../../components/LocationCard/LocationCard";
 import { Loader } from "../../components/Loader/Loader";
 import { Pagination } from "../../components/Pagination/Pagination";
-import "./Locations.scss"
 
 const GET_LOCATIONS = gql`
   query GetLocations($page: Int!) {

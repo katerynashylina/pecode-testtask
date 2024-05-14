@@ -1,12 +1,11 @@
-import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { Episode } from "../../types/Episode";
 import { getEpisodes } from "../../helpers/fetchData";
 import { EpisodeCard } from "../../components/EpisodeCard/EpisodeCard";
 import { EpisodeModal } from "../../components/EpisodeModal/EpisodeModal";
 import { Pagination } from "../../components/Pagination/Pagination";
-import "./Episodes.scss"
 import { Loader } from "../../components/Loader/Loader";
+import "./Episodes.scss"
 
 export const Episodes = () => {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
@@ -44,13 +43,14 @@ export const Episodes = () => {
   if (isLoading) return <Loader />;
 
   return (
-    <div className={classNames("page__container", {
-      "page__container--not-active": selectedEpisode,
-    })}>
+    <div className="page__container">
       <h1>Episodes</h1>
 
       {selectedEpisode &&
+        <>
+        <div className="backdrop" onClick={handleModalClose}></div>
         <EpisodeModal episode={selectedEpisode} onClose={handleModalClose} />
+        </>
       }
 
       <div className="page__wrapper">

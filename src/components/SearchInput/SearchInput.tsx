@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useRef } from "react";
 import "./SearchInput.scss"
 
 type Props = {
@@ -7,6 +7,14 @@ type Props = {
 }
 
 export const SearchInput: React.FC<Props> = ({ query, handleInputChange }) => {
+  const inputElement = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputElement.current) {
+      inputElement.current.focus();
+    }
+  }, []);
+
   return (
     <label className="search">
       <b>Search by name:</b>
@@ -16,6 +24,7 @@ export const SearchInput: React.FC<Props> = ({ query, handleInputChange }) => {
         onChange={handleInputChange}
         placeholder="Type to search by name"
         className="search__input"
+        ref={inputElement}
       />
     </label>
   )

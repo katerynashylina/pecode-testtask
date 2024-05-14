@@ -23,8 +23,13 @@ export const Characters = () => {
 
     try {
       const response = await getCharactersWithFiltration(currentPage, query, status, gender);
-      setFilteredCharacters(response.results);
-      setPages(response.info.pages);
+      
+      if (response) {
+        setFilteredCharacters(response.results);
+        setPages(response.info.pages);
+      } else {
+        setFilteredCharacters([]);
+      }
     } catch (error) {
       console.error(error, 'error while fetching characters');
       setFilteredCharacters([]);
@@ -40,8 +45,6 @@ export const Characters = () => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   }
-
-  if (isLoading) return <Loader />;
 
   return (
     <div className="page__container characters">
@@ -72,17 +75,21 @@ export const Characters = () => {
       <div className="page__wrapper">
         {!!filteredCharacters.length ? (
           <>
-            {filteredCharacters.map(character => (
-              <CharacterCard
-                character={character}
-                key={character.id}
+            {isLoading ? <Loader /> : (
+              <>
+              {filteredCharacters.map(character => (
+                <CharacterCard
+                  character={character}
+                  key={character.id}
+                />
+              ))}
+              <Pagination
+                pages={pages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
               />
-            ))}
-            <Pagination
-              pages={pages}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
+              </>
+            )}
           </>
         ) : (
           <>

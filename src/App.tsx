@@ -14,8 +14,8 @@ export const App = () => {
     <div className="page">
       <Navigation />
       <Routes>
-        <Route path="/" element={<Episodes />} />
-        <Route path="episodes" element={<Navigate to="/" replace />} />
+        <Route path="/episodes" element={<Episodes />} />
+        <Route path="/" element={<Navigate to="/episodes" replace />} />
         <Route path="/characters" element={<Characters />} />
         <Route path="/locations" element={<Locations />} />
         <Route path="*" element={<NotFound />} />

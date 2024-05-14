@@ -41,3 +41,21 @@ export const genders = [
     name: 'unknown',
   },
 ];
+
+export const routes = [
+  {
+    id: 1,
+    to: "/episodes",
+    text: "Episodes",
+  },
+  {
+    id: 2,
+    to: "/characters",
+    text: "Characters",
+  },
+  {
+    id: 3,
+    to: "/locations",
+    text: "Locations",
+  },
+];

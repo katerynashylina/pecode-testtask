@@ -18,8 +18,9 @@ export const Pagination: React.FC<Props> = ({ currentPage, pages, setCurrentPage
   const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
   const startPage = Math.max(currentPage - halfMaxPagesToShow, 1);
   const endPage = Math.min(startPage + maxPagesToShow - 1, pages);
+  const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
 
-  const handleClick = (page: number) => {
+  const handleClick = (page: number) => () => {
     window.scrollTo(0, 0);
     setCurrentPage(page);
   }
@@ -47,13 +48,13 @@ export const Pagination: React.FC<Props> = ({ currentPage, pages, setCurrentPage
         <img src={leftArrow} alt="arrow left" />
       </div>
 
-      {Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index).map((page) => (
+      {pageNumbers.map((page) => (
         <div
           key={page}
           className={classNames("pagination__element", {
             "pagination__element--active": page === currentPage,
           })}
-          onClick={() => handleClick(page)}
+          onClick={handleClick(page)}
         >
           {page}
         </div>

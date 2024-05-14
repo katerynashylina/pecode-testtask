@@ -86,7 +86,7 @@ export const Characters = () => {
           </>
         ) : (
           <>
-          <h1>Oops!</h1>
+          <h2>Oops!</h2>
           <p>Sorry, that filter combination has no results. <br /> Please try different criteria! </p>
           </>
         )}

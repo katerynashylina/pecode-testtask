@@ -1,4 +1,5 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import debounce from 'lodash.debounce';
 import { getCharactersWithFiltration } from "../../helpers/fetchData";
 import { Character } from "../../types/Character";
 import { CharacterCard } from "../../components/CharacterCard/CharacterCard";
@@ -14,15 +15,18 @@ export const Characters = () => {
   const [pages, setPages] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [query, setQuery] = useState('');
+  const [appliedQuery, setAppliedQuery] = useState('');
   const [status, setStatus] = useState('');
   const [gender, setGender] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const applyQuery = useCallback(debounce(setAppliedQuery, 800), [])
 
   async function fecthCharactersFilter() {
     setIsLoading(true);
 
     try {
-      const response = await getCharactersWithFiltration(currentPage, query, status, gender);
+      const response = await getCharactersWithFiltration(currentPage, appliedQuery, status, gender);
       
       if (response) {
         setFilteredCharacters(response.results);
@@ -40,10 +44,11 @@ export const Characters = () => {
 
   useEffect(() => {
     fecthCharactersFilter();
-  }, [query, currentPage, status, gender]);
+  }, [appliedQuery, currentPage, status, gender]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
+    applyQuery(e.target.value);
   }
 
   return (
